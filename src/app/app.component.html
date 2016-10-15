@@ -1,3 +1,28 @@
-<h1>
-  {{title}}
-</h1>
+<div class="header">
+    <div class="logo">
+        {{ 'HEADER.LOGO' | translate }}
+    </div>
+    <div class="notification">
+<i class="material-icons">notifications</i>
+    </div>
+    <div class="avatar">
+<i class="material-icons">account_box</i>
+    </div>
+    <div class="username">
+admin
+    </div>
+    <div class="more">
+<i class="material-icons">more_vert</i>
+    </div>
+</div>
+<div class="body">
+  <router-outlet></router-outlet>
+</div>
+<!-- <div class="test-container">
+    <div class="test-chart">
+        <app-chart [chartData]="testChartData" [chartType]="'line'"></app-chart>
+    </div>
+    <div class="test-map">
+        <app-map [options]="testMapOptions" title="地图"></app-map>
+    </div>
+</div> -->

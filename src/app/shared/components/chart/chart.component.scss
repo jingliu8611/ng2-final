@@ -1,0 +1,27 @@
+.chart-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.chart-type-switcher {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+}
+
+.chart {
+    width: 100%;
+    height: 100%;
+}
+
+.btn-link:hover {
+    background-color: transparent;
+}
+
+.btn-link:active {
+    background-color: transparent;
+    box-shadow: none;
+    background-image: none;
+}

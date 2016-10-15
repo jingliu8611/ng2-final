@@ -1,0 +1,226 @@
+.grid-stack {
+    // width: 900px;
+    // border: 1px solid lightgrey;
+    // height: 600px;
+}
+
+#myModal {
+    .modal-content {
+        width: 800px;
+        .modal-header {
+            border-bottom: 1px solid;
+        }
+    }
+}
+
+
+.app-container {
+    width: 100%;
+    height: 100%;
+    // background: lightgrey;
+    display: flex;
+    flex-direction: row;
+    .lang-dropdown {
+        width: 30px;
+        height: 20px;
+        margin: 30px;
+    }
+    .widget-container {
+        width: 240px;
+        height: 100%;
+        border-right: 1px solid rgba(0, 0, 0, 0.12);
+        // background: lightyellow;
+        // padding: 12px;
+        .widget-header {
+            height: 36px;
+            font-size: 14px;
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+            .item {
+                width: 33.33%;
+                line-height: 36px;
+                &:first-child {
+                    border-bottom: 2px solid #0275d8;
+                }
+                // line-height: 36px;
+            }
+            // margin-bottom: 10px;
+        }
+        .widget-content {
+            height: calc(100% - 36px);
+            width: 100%;
+            overflow: hidden;
+            // overflow-y: scroll;
+            .widget-content-row {
+                height: 120px;
+                width: 100%;
+                // padding-bottom: 10px;
+                display: flex;
+                flex-direction: row;
+                .widget-content-item {
+                    width: 50%;
+                    height: 100%;
+                    position: relative;
+                    // background: lightgrey;
+                    // border: 1px solid lightgrey;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    // background-size: contain;
+                    &:first-child {
+                        // margin-right: 10px;
+                    }
+                    &:hover {
+                        .content-item-overlay {
+                            display: flex;
+
+                        }
+                    }
+                    .content-item-overlay {
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+
+                        background: rgba(0, 0, 0, 0.69);
+                        color: white;
+                        cursor: pointer;
+                        display: none;
+                        .icon {
+                            width: 100%;
+                            align-self: center;
+                            text-align: center;
+
+                            .material-icons {
+                                font-size: 36px;
+                            }
+
+                        }
+
+                    }
+                }
+                // .widget-content-spacer {
+                //     width: 10px;
+                //     height: 100%;
+                // }
+            }
+        }
+    }
+    .content-container {
+        width: calc(100% - 240px);
+        height: 100%;
+        padding: 0 40px;
+        // background: lightgreen;
+        .content-header {
+            height: 80px;
+            width: 100%;
+            line-height: 80px;
+            font-size: 28px;
+            padding-left: 10px;
+            padding-right: 10px;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            .title {
+                flex-grow: 1;
+                line-height: 80px;
+                font-size: 20px;
+                // width: 250px;
+                display: flex;
+                flex-direction: row;
+                &.hidden-title {
+                    display: none;
+                }
+                .text, .text-edit {
+                    line-height: 80px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                }
+                .text-edit {
+                    width: calc(100% - 80px);
+                    display: flex;
+                    align-items: center;
+                    .form-control {
+                        font-size: 20px;
+                    }
+                }
+                .edit-title-button {
+                    flex-grow: 1;
+                    padding-left: 10px;
+                    .material-icons {
+                        vertical-align: sub;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .content-header-control {
+                // float: right;
+                // width: 800px;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                font-size: 16px;
+                // .row-slider, .column-slider {
+                //     width: 35%;
+                //     display: flex;
+                //     flex-direction: row;
+                //     .title {
+                //         width: 50%;
+                //         text-align: right;
+                //         padding-right: 10px;
+                //     }
+                //     .slider {
+                //         width: 50%;
+                //     }
+                // }
+                .theme-picker {
+                    // width: 15%;
+                    text-align: right;
+                    margin-right: 10px;
+                }
+                .grid-save {
+                    // width: 15%;
+                    text-align: right;
+                }
+            }
+        }
+        .content-body {
+            height: calc(100% - 80px);
+            width: 100%;
+            padding-top: 10px;
+            .grid-stack {
+                width:100%;
+            }
+            .grid-stack-guideline {
+                width: 100%;
+                padding: 0 10px;
+                .guideline-row {
+                    width: 100%;
+                    height: 95px;
+                    margin-bottom: 20px;
+                    display: flex;
+                    flex-direction: row;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                    .guideline-cell {
+                        width: calc((100% - 100px) / 6);
+                        margin-right: 20px;
+                        height: 100%;
+                        border: 1px dashed lightgrey;
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                    }
+                }
+                // height: 100%;
+            }
+            // border: 1px solid grey;
+        }
+    }
+
+}

@@ -1,0 +1,135 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Configuring Chart</h5>
+            </div>
+            <div class="modal-body">
+                <app-chart-config (closeEvent)="closeModal($event)"></app-chart-config>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="app-container">
+    <div class="widget-container">
+        <div class="widget-header">
+            <div class="item">
+                {{ 'ADMIN.CHARTS' | translate }}
+            </div>
+            <div class="item">
+                {{ 'ADMIN.MAPS' | translate }}
+            </div>
+            <div class="item">
+                {{ 'ADMIN.MORE' | translate }}
+            </div>
+        </div>
+        <div class="widget-content">
+            <div class="widget-content-row" *ngFor="let widgetChunk of widgets">
+                <div class="widget-content-item" *ngFor="let widget of widgetChunk" [style.background-image]="widget.imageUrl">
+                    <div class="content-item-overlay" (click)="addNewWidget(widget)">
+                        <div class="icon">
+                            <i class="material-icons">add</i>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- <div class="widget-content-spacer">
+
+                </div> -->
+                <!-- <div class="widget-content-item">
+                    <div class="content-item-overlay" (click)="addNewWidget()">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </div>
+                </div> -->
+            </div>
+            <!-- <div class="widget-content-row">
+                <div class="widget-content-item">
+
+                </div>
+                <div class="widget-content-spacer">
+
+                </div>
+                <div class="widget-content-item">
+
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="content-container">
+        <div class="content-header">
+            <div class="title" [class.hidden-title]="isInEditMode">
+                <span class="text">{{dashboardName || 'Dashboard'}}</span>
+                <span class="edit-title-button">
+                    <i class="material-icons" (click)="enterEdit()">mode_edit</i>
+                </span>
+            </div>
+            <div class="title" [class.hidden-title]="!isInEditMode">
+                <span class="text-edit"><input type="text" class="form-control" [(ngModel)]="dashboardEditName" placeholder="enter dashboard name" (keyup.enter)="doneEdit()"></span>
+                <span class="edit-title-button">
+                    <i class="material-icons" (click)="doneEdit()">done</i>
+                </span>
+            </div>
+            <div class="content-header-control">
+                <div class="row-slider">
+                    <!-- <div class="title">
+                        {{gridRowsCount}} Grid Rows
+                    </div>
+                    <div class="slider">
+                        <nouislider [min]="0" [max]="15" [step]="1" [(ngModel)]="gridRowsCount"></nouislider>
+                    </div> -->
+                </div>
+                <div class="column-slider">
+                    <!-- <div class="title">
+                        {{gridColumnsCount}} Grid Columns
+                    </div>
+                    <div class="slider">
+                        <nouislider [min]="0" [max]="15" [step]="1" [(ngModel)]="gridColumnsCount"></nouislider>
+                    </div> -->
+                </div>
+                <select #langSelect class="lang-dropdown" (change)="translate.use(langSelect.value)">
+                    <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+                </select>
+                <div class="theme-picker">
+                    <div class="btn-group">
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-default">{{ 'ADMIN.THEME.BUTTON' | translate }}</a>
+                            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#">{{ 'ADMIN.THEME.ACTION' | translate }}</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-save">
+                    <button type="button" class="btn btn-info" (click)="saveGrid()">{{ 'ADMIN.SAVE' | translate }}</button>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="grid-stack grid-stack-6">
+                <div class="grid-stack-item" attr.data-gs-id="{{node.id}}" attr.data-gs-x="{{node.x}}" attr.data-gs-y="{{node.y}}" attr.data-gs-width="{{node.width}}" attr.data-gs-height="{{node.height}}" attr.data-gs-auto-position="{{node.autoPosition}}" *ngFor="let node of gridSettings">
+                    <div class="grid-stack-item-content" [style.backgroundImage]="node.imageUrl">
+                        <!-- <div [style.height]="'100%'" [hidden]="node.type !== 'lineChart'">
+                            <app-chart [chartData]="testChartData" [chartType]="'line'" [availableTypes]="['line']"></app-chart>
+
+                        </div> -->
+                    </div>
+                    <div class="grid-stack-item-delete" (click)="removeWidget(node)"><i class="material-icons">delete</i></div>
+                    <div class="grid-stack-item-config" (click)="openConfigModal(node)"><i class="material-icons">settings</i></div>
+                </div>
+                <div class="grid-stack-guideline">
+                    <div class="guideline-row" *ngFor="let row of gridRows">
+                        <div class="guideline-cell" *ngFor="let cell of gridColumns">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

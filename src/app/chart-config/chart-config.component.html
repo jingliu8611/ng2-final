@@ -1,0 +1,107 @@
+<form [formGroup]="chartConfigForm" (ngSubmit)="onSubmit()">
+    <div class="form-body row">
+        <div class="body-column col-xs-6">
+            <div class="form-group">
+                <label for="title" class="field-label">Title</label>
+                <input type="text" class="form-control" id="title" formControlName="title">
+            </div>
+            <div class="form-group source-field">
+                <label for="source" class="field-label">Source</label>
+                <div class="dropdown">
+                    <button class="btn btn-link dropdown-toggle btn-underline" type="button" data-toggle="dropdown">
+                        {{chartConfigForm.controls['type'].value}}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" (click)="onChangeDropdownMenu('type', sourceTypes[0])">{{sourceTypes[0]}}</a></li>
+                        <li><a href="#" (click)="onChangeDropdownMenu('type', sourceTypes[1])">{{sourceTypes[1]}}</a></li>
+                        <li><a href="#" (click)="onChangeDropdownMenu('type', sourceTypes[2])">{{sourceTypes[2]}}</a></li>
+                    </ul>
+                </div>
+                <input type="text" class="form-control" id="source" formControlName="source">
+            </div>
+            <div>
+                <label for="filter-input" class="field-label">Filters</label>
+                <div style="position: relative;">
+                    <input id="filter-input" type="text" formControlName="new-filter" class="col-xs-12">
+                    <button type="button" class="btn btn-link add-btn" (click)="onAddFilter()" [disabled]="!chartConfigForm.controls['new-filter'].value">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div formArrayName="filters">
+                    <button type="button" class="form-group btn btn-link removable-btn" (click)="onRemoveConstraint('filters', i)"
+                            *ngFor="let filter of chartConfigForm.controls['filters'].controls; let i = index">{{filter.value}} <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="field-label">Refresh Interval</label>
+                <div class="dropdown">
+                    <button class="btn btn-link dropdown-toggle btn-underline" type="button" data-toggle="dropdown">
+                        {{chartConfigForm.controls['interval'].value}}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" (click)="onChangeDropdownMenu('interval', intervals[0])">{{intervals[0]}}</a></li>
+                        <li><a href="#" (click)="onChangeDropdownMenu('interval', intervals[1])">{{intervals[1]}}</a></li>
+                        <li><a href="#" (click)="onChangeDropdownMenu('interval', intervals[2])">{{intervals[2]}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="body-column col-xs-6">
+            <div class="form-group">
+                <label for="uri" class="field-label">URI</label>
+                <input type="text" class="form-control" id="uri" formControlName="uri">
+            </div>
+            <div class="form-group source-field">
+                <div>
+                    <label  class="field-label">{{chartConfigForm.controls['type'].value}} Template</label>
+                    <a #downloadBtn class="form-btn download-btn">DOWNLOAD <i class="fa fa-download" aria-hidden="true"></i></a>
+                </div>
+                <div *ngIf="chartConfigForm.controls['type'].value === 'API'" class="template-content">{{apiTemplate}}</div>
+                <pre *ngIf="chartConfigForm.controls['type'].value === 'JSON'" class="template-content">{{ jsonTemplate | json:4 }}</pre>
+                <div *ngIf="chartConfigForm.controls['type'].value === 'CSV'" class="template-content">{{csvTemplate}}</div>
+            </div>
+            <div>
+                <label for="sorting-input" class="field-label">Sortings</label>
+                <div style="position: relative;">
+                    <input id="sorting-input" type="text" formControlName="new-sorting" class="col-xs-12">
+                    <button type="button" class="btn btn-link add-btn" (click)="onAddSorting()" [disabled]="!chartConfigForm.controls['new-sorting'].value">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div formArrayName="sortings">
+                    <button type="button" class="form-group btn btn-link removable-btn" (click)="onRemoveConstraint('sortings', i)"
+                            *ngFor="let sorting of chartConfigForm.controls['sortings'].controls; let i = index">{{sorting.value}} <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="field-label">Theme</label>
+                <div class="dropdown">
+                    <button class="btn btn-link dropdown-toggle btn-underline" type="button" data-toggle="dropdown">
+                        <i #themeCircle class="fa fa-circle" aria-hidden="true" style="color: lightblue;"></i> {{chartConfigForm.controls['theme'].value}}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" (click)="onChangeDropdownMenu('theme', themes[0])"><i class="fa fa-circle" aria-hidden="true" style="color: lightblue;"></i> {{themes[0]}}</a></li>
+                        <li><a href="#" (click)="onChangeDropdownMenu('theme', themes[1])"><i class="fa fa-circle" aria-hidden="true" style="color: lavenderblush;"></i> {{themes[1]}}</a></li>
+                        <li><a href="#" (click)="onChangeDropdownMenu('theme', themes[2])"><i class="fa fa-circle" aria-hidden="true" style="color: rosybrown;"></i> {{themes[2]}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-footer row">
+        <button type="button" class="btn btn-primary form-btn" [disabled]="!chartConfigForm.valid">
+            <i class="fa fa-eye" aria-hidden="true"></i> PREVIEW
+        </button>
+        <button type="button" class="btn btn-default form-btn" data-dismiss="modal" aria-label="Close">
+            <i class="fa fa-times" aria-hidden="true"></i> CANCEL
+        </button>
+        <button type="submit" class="btn btn-primary form-btn" [disabled]="!chartConfigForm.valid">
+            SUBMIT
+        </button>
+    </div>
+</form>

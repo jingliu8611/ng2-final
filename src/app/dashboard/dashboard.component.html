@@ -1,0 +1,14 @@
+<div class="dashboard-container">
+    <div class="content-body">
+        <div class="grid-stack grid-stack-6" id="dashboard-grid-stack">
+            <div class="grid-stack-item" attr.data-gs-x="{{node.x}}" attr.data-gs-y="{{node.y}}" attr.data-gs-width="{{node.width}}" attr.data-gs-height="{{node.height}}" attr.data-gs-auto-position="{{node.autoPosition}}" *ngFor="let node of gridSettings">
+                <div class="grid-stack-item-content" [style.height]="node.height*102 + (node.height-1)*20 + 'px'" >
+                    <div [style.height]="'100%'" [hidden]="node.type !== 'lineChart'">
+                        <app-chart [chartData]="testChartData" [chartType]="'line'" [availableTypes]="['line']"></app-chart>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

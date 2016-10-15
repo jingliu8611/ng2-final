@@ -1,0 +1,16 @@
+<div class="chart-container">
+    <div class="chart-type-switcher">
+        <div class="btn-group" *ngIf="currentAvailableChartTypes.length > 0">
+            <a href="#" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <i class="fa {{chartTypeClassMappings[currentChartType]}}" aria-hidden="true"></i>
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" style="min-width: 0;">
+                <li *ngFor="let type of currentAvailableChartTypes"><a style="cursor: pointer;" (click)="changeChartType(type)"><i class="fa {{chartTypeClassMappings[type]}}" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div #chart class="chart">
+
+    </div>
+</div>

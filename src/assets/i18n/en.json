@@ -1,0 +1,15 @@
+{
+    "HEADER": {
+        "LOGO": "Logo"
+    },
+    "ADMIN": {
+        "CHARTS": "charts",
+        "MAPS": "maps",
+        "MORE": "more",
+        "THEME": {
+            "BUTTON": "THEME",
+            "ACTION": "action"
+        },
+        "SAVE": "SAVE GRID"
+    }
+}

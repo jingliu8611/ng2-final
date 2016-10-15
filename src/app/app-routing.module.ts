@@ -1,11 +1,15 @@
-import { NgModule } from '@angular/core';
+import { AdminComponent } from './admin';
+import { DashboardComponent } from './dashboard';
+import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+const appRoutes: Routes = [
+    { path: '', component: AdminComponent },
+    { path: 'dashboard', component: DashboardComponent },
+];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-  providers: []
-})
-export class Ng2FinalRoutingModule { }
+export const appRoutingProviders: any[] = [
+
+];
+
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
