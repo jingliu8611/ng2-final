@@ -1,0 +1,15 @@
+{
+    "HEADER": {
+        "LOGO": "标志"
+    },
+    "ADMIN": {
+        "CHARTS": "图表",
+        "MAPS": "地图",
+        "MORE": "更多",
+        "THEME": {
+            "BUTTON": "主题",
+            "ACTION": "行动"
+        },
+        "SAVE": "保存"
+    }
+}
